@@ -1,21 +1,22 @@
 from django.db import models
 from ckeditor.fields import RichTextField
 
-
-
-
+LOCATION_CHOICES = (
+        ('Aurora', 'Aurora'),
+        ('Naperville North', 'Naperville North'),
+        ('Naperville Central', 'Naperville Central')
+    )
+SPEECH_EVAL_REPORT_TITLES = (
+        ('Initial Speech-Language Evaluation Report', 'Initial Speech-Language Evaluation Report'),
+        ('Speech-Language Re-evaluation Report', 'Speech-Language Re-evaluation Report'),
+    )
 # Create your models here.
 class Patient(models.Model):
     first_name = models.CharField(max_length=30)
     last_name = models.CharField(max_length=30)
-    account_number = models.IntegerField()
     date_of_birth = models.DateField()
     clinician = models.CharField(max_length=30)
     supervising_clinician = models.CharField(max_length=30)
-    payor = models.CharField(max_length=30)
-    pol_claim_number = models.CharField(max_length=30)
-    ssn = models.CharField(max_length=20)
-    visits = models.IntegerField()
     chronological_age = models.IntegerField()
     adjusted_age = models.IntegerField()
     referral_physician = models.CharField(max_length=100)
@@ -54,6 +55,8 @@ class Physician(models.Model):
 class SpeechEvaluationReport(models.Model):
     patient = models.ForeignKey(Patient)
     date_of_visit = models.DateField()
+    location = models.CharField(max_length=200, choices=LOCATION_CHOICES)
+    report_type = models.CharField(max_length=200, choices=SPEECH_EVAL_REPORT_TITLES)
     diagnosis = models.CharField(max_length=200)
     identifying_information_and_referral = RichTextField()
     parent_concern = RichTextField()
@@ -65,11 +68,16 @@ class SpeechEvaluationReport(models.Model):
     education = RichTextField()
     hearing = RichTextField()
     cranial_nerve_exam = RichTextField()
-    articulation = RichTextField()
-    language_evaluation = RichTextField()
-    language_sample = RichTextField()
+    articulation = RichTextField(blank=True)
+    initial_language_evaluation = RichTextField(blank=True)
+    speech_language_reevaluation_and_progress = RichTextField(blank=True)
+    language_sample = RichTextField(blank=True)
     voice_and_fluency = RichTextField()
-    summary_and_recommendations = RichTextField()
+    clinical_impressions_and_recommendations = RichTextField()
+    referrals_and_follow_up = RichTextField()
+    long_term_goals = RichTextField()
+    short_term_goals = RichTextField()
+    statement_of_medical_neccessity = RichTextField()
     electronic_signature = RichTextField()
     
     

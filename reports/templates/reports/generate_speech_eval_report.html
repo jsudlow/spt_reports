@@ -1,44 +1,94 @@
-<span style="font-size:18px;"><b>Speech Evaluation Report</b> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b>Patient:</b>&nbsp;{{patient.first_name}} {{patient.last_name}}&nbsp;&nbsp;<b>Visit date:</b> {{report.date_of_visit}}</span>
-
-<br /><br />
+<html>
+<head>
+  <style>
+  @page {
+    size: letter;
+    margin:10pt;
+    border: 0pt solid white;
+  
+        
+  @frame footer_frame {           /* Static frame */
+            -pdf-frame-content: footer_content;
+            left: 10pt;
+           
+            top: 772pt;
+            
+        }
+      }
+  </style>
+</head>
+<body>
+  <div id="footer_content"> {{ patient.first_name }}&nbsp;{{ patient.last_name }}~{{report.report_type}}&nbsp;~{{report.date_of_visit}}~page <pdf:pagenumber> of <pdf:pagecount>
+    </div>
 <table border=0>
   <tr>
-    <td valign="top" width="400"> <img align="left"src="http://localhost:8000/static/logo_pdf.jpg" alt="SPT_logo"/>
-      <br />
-      <br />
-       <br />
-      <br />
-       <br />
-      <br />
+    <td width="420">
+     <span style="font-size:18px;"><b>{{ report.report_type }}</b> </span>
+    </td>
+    <td align="right" width="400">
+      <span style="font-size:18px;">
+      <b>Patient:</b>&nbsp;&nbsp;{{patient.first_name}} {{patient.last_name}}
+      </span>
+    </td>
+   </tr>
+</table>
+<br />
+<table border=0>
+  <tr>
+    <td valign="top" width="400"> 
+      <img align="left"src="http://localhost:8000/static/logo_pdf.jpg" alt="SPT_logo"/>
+     <p>
+  
       <b>Suburban Pediatric Therapies</b>
-      
+      {% if report.location == "Aurora" %}
       <br /> 3965 75th Street
       <br /> Suite 104
       <br /> Aurora, IL 60504
       <br /> Phone: (630) 236-7000 Fax:(630) 236-7800  
+      {% endif %}
+
+      {% if report.location == "Naperville North" %}
+      <br /> 800 W.5th Avenue
+      <br /> Suite 110
+      <br /> Naperville, IL 60563
+      <br /> Phone: (630) 236-7000 Fax:(630) 236-7800  
+      {% endif %}
+
+      {% if report.location == "Naperville Central" %}
+      <br /> 1259 Rickert Drive
+      <br /> Suite 206
+      <br /> Naperville, IL 60540
+      <br /> Phone: (630) 236-7000 Fax:(630) 236-7800  
+      {% endif %}
     
+    </p>
     </td>
-    <td valign="bottom" width="300">
+    <td width="300">
+    <span style="font-size:12px;">
     <img src="http://localhost:8000/static/patient.png" alt="SPT_logo"/>&nbsp;<b>Patient Information</b>
-    <br /> <b>Account #:</b>&nbsp;&nbsp;&nbsp;{{ patient.account_number }} 
-    <br /> <b>DOB:</b> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{patient.date_of_birth}}
-    <br /> <b>S.Clinician:</b>&nbsp;{{patient.supervising_clinician}}
-    <br /> <b>Clinician:</b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{patient.clinician}}
-    <br /> <b>SSN:</b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{patient.ssn}}
-    <br /> <b>Payor:</b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{patient.payor}} 
-    <br /> <b>Pol/Claim#:</b>&nbsp;{{patient.pol_claim_number}}
-  
+    <br />
+    
+    <br /> <b>First:</b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{patient.first_name }} 
+    <br /> <b>Last:</b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{patient.last_name}}     
+    <br /> <b>DOB:</b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{patient.date_of_birth}}
+    <br /> <b>Sup. Clinician:</b>&nbsp;{{patient.supervising_clinician}}
+    <br /> <b>Clinician:</b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{patient.clinician}}
+    <br /> <b>Visit Date:</b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{report.date_of_visit}}
+   </span>
 
     </td>
-    <td valign="bottom" width="300">
-      <img src="http://localhost:8000/static/doctor_icon.png" alt="SPT_logo"/>&nbsp;<b>Doctor Information</b>
+    <td width="300">
+      <span style="font-size:12px;">
+      <img src="http://localhost:8000/static/doctor_icon.png" alt="SPT_logo"/>&nbsp;<b>Physician Information</b>
+      <br />
+        
         <br /> <b>Ref. Physician:</b>&nbsp;&nbsp;&nbsp;{{patient.referral_physician}}
         <br /> <b>Ref. Phone:</b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{patient.referral_physician_phone}}
         <br /> <b>Ref. Fax:</b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{patient.referral_physician_fax}}
         <br /> <b>Pediatrician:</b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{patient.pediatrician}}
         <br /> <b>Phone:</b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{patient.pediatrician_phone}}
         <br /> <b>Fax:</b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{patient.pediatrician_fax}}
-        <br /> <b>Visits:</b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{patient.visits}}
+       </span>
        </td>
   </tr>
   </table>
@@ -56,14 +106,35 @@
 <br /><span style="font-size:16px;"><b>Education:</b></span><br />{{report.education|safe}}<br />
 <br /><span style="font-size:16px;"><b>Hearing:</b></span><br />{{report.hearing|safe}}<br />
 <br /><span style="font-size:16px;"><b>Cranial Nerve Exam:</b></span><br />{{report.cranial_nerve_exam|safe}}<br />
+
+{% if report.articulation %}
 <br /><span style="font-size:16px;"><b>Articulation:</b></span><br />{{report.articulation|safe}}<br />
-<br /><span style="font-size:16px;"><b>Language Evaluation:</b></span><br />{{report.language_evaluation|safe}}<br />
+{% endif %}
+
+{% if report.initial_language_evaluation %}
+<br /><span style="font-size:16px;"><b>Initial Language Evaluation:</b></span><br />{{report.initial_language_evaluation|safe}}<br />
+{% endif %}
+
+{% if report.speech_language_reevaluation_and_progress %}
+<br /><span style="font-size:16px;"><b>Speech-Language Re-Evaluation and Progress(for six month assessment):</b></span><br />{{report.speech_language_reevaluation_and_progress|safe}}
+{% endif %}
+
+{% if report.language_sample %}
 <br /><span style="font-size:16px;"><b>Language Sample:</b></span><br />{{report.language_sample|safe}}<br />
+{% endif %}
+
 <br /><span style="font-size:16px;"><b>Voice and Fluency:</b></span><br />{{report.voice_and_fluency|safe}}<br />
-<br /><span style="font-size:16px;"><b>Summary and Recommendations:</b></span><br />{{report.summary_and_recommendations|safe}}<br />
+<br /><span style="font-size:16px;"><b>Clinical Impressions and Recommendations:</b></span><br />{{report.clinical_impressions_and_recommendations|safe}}<br />
+<span style="font-size:16px;"><b>Diagnosis:</b></span><br /><br />{{report.diagnosis}}<br /><br />
+<br /><span style="font-size:16px;"><b>Referrals and Follow Up:</b></span><br />{{report.referrals_and_follow_up|safe}}<br />
+<br /><span style="font-size:16px;"><b>Short Term Goals:</b></span><br />{{report.short_term_goals|safe}}<br />
+<br /><span style="font-size:16px;"><b>Long Term Goals:</b></span><br />{{report.long_term_goals|safe}}<br />
+<br /><span style="font-size:16px;"><b>Statement of Medical Neccessity:</b></span><br />{{report.statement_of_medical_neccessity|safe}}<br />
+
 <hr />
 <br /><span style="font-size:16px;"><b>Electronic Signature:</b></span><br />{{report.electronic_signature|safe}}<br />
-
+</body>
+</html>
 
 
 
