@@ -31,19 +31,25 @@
  ol {
   padding-left:20px;
  }
+#footer_content{
+  font-size: 10px;
+  margin-top: 20px;
 
+}
   @page {
+
     size: letter;
-    margin:9pt;
+    margin:12pt;
     border: 0pt solid white;
 
   
         
   @frame footer_frame {           /* Static frame */
             -pdf-frame-content: footer_content;
+            
             left: 10pt;
-           
-            top: 770pt;
+            top: 777pt;
+
             
         }
 
@@ -73,7 +79,7 @@
 <br />
 <table border=0>
   <tr>
-    <td valign="top" width="400"> 
+    <td valign="bottom" width="200"> 
       <img align="left"src="http://localhost:8000/static/logo_pdf.jpg" alt="SPT_logo"/>
      <p>
   
@@ -101,32 +107,49 @@
     
     </p>
     </td>
-    <td width="300">
-    <span style="font-size:12px;">
-    <img src="http://localhost:8000/static/patient.png" alt="SPT_logo"/>&nbsp;<b>Patient Information</b>
-    <br />
+    <td valign="bottom" width="70">
     
-    <br /> <b>First:</b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{patient.first_name }} 
-    <br /> <b>Last:</b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{patient.last_name}}     
-    <br /> <b>DOB:</b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{patient.date_of_birth}}
-    <br /> <b>Sup. Clinician:</b>&nbsp;&nbsp;{{patient.supervising_clinician}}
-    <br /> <b>Clinician:</b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{patient.clinician}}
-    <br /> <b>Visit Date:</b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{report.date_of_visit}}
-   </span>
+    <img src="http://localhost:8000/static/patient.png" alt="SPT_logo"/>&nbsp;<b>Patient</b>
+    
+    
+    <br /> <b>First:</b>
+    <br /> <b>Last:</b>
+    <br /> <b>DOB:</b>
+    <br /> <b>Sup. Clinician:</b>
+    <br /> <b>Clinician:</b>
+    <br /> <b>Visit Date:</b>
+ 
+   <td valign="bottom" width="130">
+ {{patient.first_name }} 
+    <br /> {{patient.last_name}}     
+    <br />{{patient.date_of_birth}}
+    <br /> {{patient.supervising_clinician}}
+    <br /> {{patient.clinician}}
+    <br /> {{report.date_of_visit}}
 
+   </td>
     </td>
-    <td width="300">
-      <span style="font-size:12px;">
-      <img src="http://localhost:8000/static/doctor_icon.png" alt="SPT_logo"/>&nbsp;<b>Physician Information</b>
-      <br />
+    <td width="70" valign="bottom">
+     
+      <img src="http://localhost:8000/static/doctor_icon.png" alt="SPT_logo"/>&nbsp;<b>Physician</b>
+    
         
-        <br /> <b>Ref. Physician:</b>&nbsp;&nbsp;&nbsp;{{patient.referral_physician}}
-        <br /> <b>Ref. Phone:</b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{patient.referral_physician_phone}}
-        <br /> <b>Ref. Fax:</b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{patient.referral_physician_fax}}
-        <br /> <b>Pediatrician:</b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{patient.pediatrician}}
-        <br /> <b>Phone:</b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{patient.pediatrician_phone}}
-        <br /> <b>Fax:</b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{patient.pediatrician_fax}}
-       </span>
+        <br /> <b>Ref. Physician:</b>
+        <br /> <b>Ref. Phone:</b>
+        <br /> <b>Ref. Fax:</b>
+        <br /> <b>Pediatrician:</b>
+        <br /> <b>Phone:</b>
+        <br /> <b>Fax:</b>
+
+       </td>
+
+       <td valign="bottom" width="130">
+ <br /> {{patient.referral_physician}}
+        <br />{{patient.referral_physician_phone}}
+        <br /> {{patient.referral_physician_fax}}
+        <br />{{patient.pediatrician}}
+        <br /> {{patient.pediatrician_phone}}
+        <br /> {{patient.pediatrician_fax}}
        </td>
   </tr>
   </table>
