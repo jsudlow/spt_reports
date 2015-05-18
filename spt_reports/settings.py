@@ -81,7 +81,7 @@ WSGI_APPLICATION = 'spt_reports.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'spt_reports',
+        'NAME': 'spt_reports_unicode',
         'USER': 'root',
         'PASSWORD': 'jonjon',
         'HOST' : '127.0.0.1',
@@ -116,5 +116,6 @@ CKEDITOR_CONFIGS = {
         'toolbar': 'full',
         'height': 300,
         'width': 1000,
+        'specialChars': ['&#x0278;','&#x014B','&#x0283;','&#x0292;','&#x03B8;','&eth;','&#x0283;','&#x0292;','&#x026A;','&#x025B;','&aelig;','&#x2059;','&#x028C;','&#x025A;','&#x025D;','&#x028A;','&#x0254;','&#x0251;'],
     },
 }

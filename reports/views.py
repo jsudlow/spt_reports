@@ -10,6 +10,27 @@ from django.template.loader import get_template
 from django.template import Context
 from xhtml2pdf import pisa 
 # Create your views here.
+
+def link_callback(uri, rel):
+    # use short variable names
+    sUrl = settings.STATIC_URL      # Typically /static/
+    sRoot = settings.STATIC_ROOT    # Typically /home/userX/project_static/
+    mUrl = settings.MEDIA_URL       # Typically /static/media/
+    mRoot = settings.MEDIA_ROOT     # Typically /home/userX/project_static/media/
+
+    # convert URIs to absolute system paths
+    if uri.startswith(mUrl):
+        path = os.path.join(mRoot, uri.replace(mUrl, ""))
+    elif uri.startswith(sUrl):
+        path = os.path.join(sRoot, uri.replace(sUrl, ""))
+
+    # make sure that file exists
+    if not os.path.isfile(path):
+            raise Exception(
+                    'media URI must start with %s or %s' % \
+                    (sUrl, mUrl))
+    return path
+
 def index(request):
     return render(request, 'reports/index.html')
 def generate_speech_eval_report2(request, report_id):

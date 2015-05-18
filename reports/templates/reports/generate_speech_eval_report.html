@@ -1,20 +1,58 @@
 <html>
 <head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
   <style>
+  @font-face {
+   font-family: DejaBold;
+   src: url("http://localhost:8000/static/CharisSIL-R.ttf");
+}
+/* Bold */
+@font-face {
+   font-family: DejaBold;
+   src: url("http://localhost:8000/static/CharisSIL-B.ttf");
+   font-weight: bold;
+   
+}
+
+/* Italic */
+@font-face {
+   font-family: DejaBold;
+   src: url("http://localhost:8000/static/CharisSIL-I.ttf");
+   font-style: italic;
+}
+
+  body {
+   font-family:DejaBold;
+   font-size:12px;
+ }
+ ul {
+  padding-left:20px;
+ }
+ ol {
+  padding-left:20px;
+ }
+
   @page {
     size: letter;
-    margin:10pt;
+    margin:9pt;
     border: 0pt solid white;
+
   
         
   @frame footer_frame {           /* Static frame */
             -pdf-frame-content: footer_content;
             left: 10pt;
            
-            top: 772pt;
+            top: 770pt;
             
         }
+
+
       }
+ 
+
+
+         
   </style>
 </head>
 <body>
@@ -23,10 +61,10 @@
 <table border=0>
   <tr>
     <td width="420">
-     <span style="font-size:18px;"><b>{{ report.report_type }}</b> </span>
+     <span style="font-size:16px;"><b>{{ report.report_type }}</b> </span>
     </td>
     <td align="right" width="400">
-      <span style="font-size:18px;">
+      <span style="font-size:16px;">
       <b>Patient:</b>&nbsp;&nbsp;{{patient.first_name}} {{patient.last_name}}
       </span>
     </td>
@@ -71,9 +109,9 @@
     <br /> <b>First:</b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{patient.first_name }} 
     <br /> <b>Last:</b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{patient.last_name}}     
     <br /> <b>DOB:</b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{patient.date_of_birth}}
-    <br /> <b>Sup. Clinician:</b>&nbsp;{{patient.supervising_clinician}}
+    <br /> <b>Sup. Clinician:</b>&nbsp;&nbsp;{{patient.supervising_clinician}}
     <br /> <b>Clinician:</b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{patient.clinician}}
-    <br /> <b>Visit Date:</b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{report.date_of_visit}}
+    <br /> <b>Visit Date:</b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{report.date_of_visit}}
    </span>
 
     </td>
@@ -83,11 +121,11 @@
       <br />
         
         <br /> <b>Ref. Physician:</b>&nbsp;&nbsp;&nbsp;{{patient.referral_physician}}
-        <br /> <b>Ref. Phone:</b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{patient.referral_physician_phone}}
-        <br /> <b>Ref. Fax:</b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{patient.referral_physician_fax}}
-        <br /> <b>Pediatrician:</b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{patient.pediatrician}}
-        <br /> <b>Phone:</b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{patient.pediatrician_phone}}
-        <br /> <b>Fax:</b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{patient.pediatrician_fax}}
+        <br /> <b>Ref. Phone:</b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{patient.referral_physician_phone}}
+        <br /> <b>Ref. Fax:</b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{patient.referral_physician_fax}}
+        <br /> <b>Pediatrician:</b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{patient.pediatrician}}
+        <br /> <b>Phone:</b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{patient.pediatrician_phone}}
+        <br /> <b>Fax:</b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{patient.pediatrician_fax}}
        </span>
        </td>
   </tr>
@@ -127,10 +165,9 @@
 <br /><span style="font-size:16px;"><b>Clinical Impressions and Recommendations:</b></span><br />{{report.clinical_impressions_and_recommendations|safe}}<br />
 <span style="font-size:16px;"><b>Diagnosis:</b></span><br /><br />{{report.diagnosis}}<br /><br />
 <br /><span style="font-size:16px;"><b>Referrals and Follow Up:</b></span><br />{{report.referrals_and_follow_up|safe}}<br />
-<br /><span style="font-size:16px;"><b>Short Term Goals:</b></span><br />{{report.short_term_goals|safe}}<br />
 <br /><span style="font-size:16px;"><b>Long Term Goals:</b></span><br />{{report.long_term_goals|safe}}<br />
+<br /><span style="font-size:16px;"><b>Short Term Goals:</b></span><br />{{report.short_term_goals|safe}}<br />
 <br /><span style="font-size:16px;"><b>Statement of Medical Neccessity:</b></span><br />{{report.statement_of_medical_neccessity|safe}}<br />
-
 <hr />
 <br /><span style="font-size:16px;"><b>Electronic Signature:</b></span><br />{{report.electronic_signature|safe}}<br />
 </body>
