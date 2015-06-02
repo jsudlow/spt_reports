@@ -56,10 +56,20 @@ def generate_speech_eval_report(request, report_id):
     
     report = SpeechEvaluationReport.objects.get(id=report_id)
     patient = Patient.objects.get(id=report.patient_id)
-    data = {'report': report, 'patient': patient}
+
+    dob = patient.date_of_birth
+    date_of_visit = report.date_of_visit
+    years = (date_of_visit - dob).days/365
+    print "dob", dob
+    print "visit date",date_of_visit
+
+    print "years:", years
+
+
+    data = {'report': report, 'patient': patient, 'years': years}
     template = get_template('reports/generate_speech_eval_report.html')
     html  = template.render(Context(data))
-    print html
+    #print html
 
     file = open('test.pdf', "w+b")
     pisaStatus = pisa.CreatePDF(html.encode('utf-8'), dest=file,

@@ -31,6 +31,8 @@
  ol {
   padding-left:20px;
  }
+p { -pdf-keep-with-next: true; }
+p.separator { -pdf-keep-with-next: false;}
 #footer_content{
   font-size: 10px;
   margin-top: 20px;
@@ -38,8 +40,8 @@
 }
   @page {
 
-    size: letter;
-    margin:12pt;
+    size: a4 letter;
+    margin:21pt;
     border: 0pt solid white;
 
   
@@ -47,18 +49,15 @@
   @frame footer_frame {           /* Static frame */
             -pdf-frame-content: footer_content;
             
-            left: 10pt;
-            top: 777pt;
+            left: 20pt;
+            top: 760pt;
 
             
         }
 
 
       }
- 
-
-
-         
+    
   </style>
 </head>
 <body>
@@ -71,7 +70,7 @@
     </td>
     <td align="right" width="400">
       <span style="font-size:16px;">
-      <b>Patient:</b>&nbsp;&nbsp;{{patient.first_name}} {{patient.last_name}}
+      <b>Patient:</b>&nbsp;&nbsp;{{patient.first_name}} {{patient.last_name}}&nbsp;<b>Age:</b>&nbsp;{{years}}
       </span>
     </td>
    </tr>
@@ -156,43 +155,129 @@
   
 <hr>
 <span style="font-size:16px;"><b>Diagnosis:</b></span>&nbsp;&nbsp;&nbsp;{{report.diagnosis}}<br />
+<p class="separator">&nbsp;<p>
+<p>
+  <span style="font-size:16px;"><b>Identifying Information and Referral:</b></span><br />{{report.identifying_information_and_referral|safe}}
+<p>
+<p class="separator">&nbsp;<p>
+<p>
+  <span style="font-size:16px;"><b>Parent Concern:</b></span><br />{{report.parent_concern|safe}}
+<p>
+<p class="separator">&nbsp;<p>
 
-<br /><span style="font-size:16px;"><b>Identifying Information and Referral:</b></span><br />{{report.identifying_information_and_referral|safe}}<br />
-<br /><span style="font-size:16px;"><b>Parent Concern:</b></span><br />{{report.parent_concern|safe}}<br />
-<br /><span style="font-size:16px;"><b>Background Information:</b></span><br />{{report.background_information|safe}}<br />
-<br /><span style="font-size:16px;"><b>Pregnancy and Birth:</b></span><br />{{report.pregnancy_and_birth|safe}}<br />
-<br /><span style="font-size:16px;"><b>Medical:</b></span><br />{{report.medical|safe}}<br />
-<br /><span style="font-size:16px;"><b>Developmental:</b></span><br />{{report.developmental|safe}}<br />
-<br /><span style="font-size:16px;"><b>Family/Social:</b></span><br />{{report.family_social|safe}}<br />
-<br /><span style="font-size:16px;"><b>Education:</b></span><br />{{report.education|safe}}<br />
-<br /><span style="font-size:16px;"><b>Hearing:</b></span><br />{{report.hearing|safe}}<br />
-<br /><span style="font-size:16px;"><b>Cranial Nerve Exam:</b></span><br />{{report.cranial_nerve_exam|safe}}<br />
+<p>
+<span style="font-size:16px;"><b>Background Information:</b></span><br />{{report.background_information|safe}}
+<p>
+
+<p class="separator">&nbsp;<p>
+
+<p>
+  <span style="font-size:16px;"><b>Pregnancy and Birth:</b></span><br />{{report.pregnancy_and_birth|safe}}
+<p>
+
+<p class="separator">&nbsp;<p>
+
+<p>
+<span style="font-size:16px;"><b>Medical:</b></span><br />{{report.medical|safe}}
+<p>
+
+<p class="separator">&nbsp;<p>
+
+<p>
+<span style="font-size:16px;"><b>Developmental:</b></span><br />{{report.developmental|safe}}
+<p>
+
+<p class="separator">&nbsp;<p>
+
+<p>
+ <span style="font-size:16px;"><b>Family/Social:</b></span><br />{{report.family_social|safe}}
+<p>
+
+<p class="separator">&nbsp;<p>
+
+<p>
+   <span style="font-size:16px;"><b>Education:</b></span><br />{{report.education|safe}}
+<p>
+
+<p class="separator">&nbsp;<p>
+
+<p>
+  <span style="font-size:16px;"><b>Hearing:</b></span><br />{{report.hearing|safe}}
+<p>
+
+<p class="separator">&nbsp;<p>
+
+<p>
+  <span style="font-size:16px;"><b>Cranial Nerve Exam:</b></span><br />{{report.cranial_nerve_exam|safe}}
+<p>
+
+<p class="separator">&nbsp;<p>
 
 {% if report.articulation %}
-<br /><span style="font-size:16px;"><b>Articulation:</b></span><br />{{report.articulation|safe}}<br />
+<p>
+<span style="font-size:16px;"><b>Articulation:</b></span><br />{{report.articulation|safe}}
+<p>
+
+  <p class="separator">&nbsp;<p>
 {% endif %}
 
 {% if report.initial_language_evaluation %}
-<br /><span style="font-size:16px;"><b>Initial Language Evaluation:</b></span><br />{{report.initial_language_evaluation|safe}}<br />
+<p>
+<span style="font-size:16px;"><b>Language:</b></span><br />{{report.initial_language_evaluation|safe}}
+<p>
+  <p class="separator">&nbsp;<p>
 {% endif %}
 
 {% if report.speech_language_reevaluation_and_progress %}
-<br /><span style="font-size:16px;"><b>Speech-Language Re-Evaluation and Progress(for six month assessment):</b></span><br />{{report.speech_language_reevaluation_and_progress|safe}}
+<p>
+ <span style="font-size:16px;"><b>Speech Language Progress:</b></span><br />{{report.speech_language_reevaluation_and_progress|safe}}
+ <p>
+  <p class="separator">&nbsp;<p>
 {% endif %}
 
 {% if report.language_sample %}
-<br /><span style="font-size:16px;"><b>Language Sample:</b></span><br />{{report.language_sample|safe}}<br />
+<p>
+<span style="font-size:16px;"><b>Language Sample:</b></span><br />{{report.language_sample|safe}}
+<p>
+  <p class="separator">&nbsp;<p>
 {% endif %}
 
-<br /><span style="font-size:16px;"><b>Voice and Fluency:</b></span><br />{{report.voice_and_fluency|safe}}<br />
-<br /><span style="font-size:16px;"><b>Clinical Impressions and Recommendations:</b></span><br />{{report.clinical_impressions_and_recommendations|safe}}<br />
-<span style="font-size:16px;"><b>Diagnosis:</b></span><br /><br />{{report.diagnosis}}<br /><br />
-<br /><span style="font-size:16px;"><b>Referrals and Follow Up:</b></span><br />{{report.referrals_and_follow_up|safe}}<br />
-<br /><span style="font-size:16px;"><b>Long Term Goals:</b></span><br />{{report.long_term_goals|safe}}<br />
-<br /><span style="font-size:16px;"><b>Short Term Goals:</b></span><br />{{report.short_term_goals|safe}}<br />
-<br /><span style="font-size:16px;"><b>Statement of Medical Neccessity:</b></span><br />{{report.statement_of_medical_neccessity|safe}}<br />
+<p>
+ <span style="font-size:16px;"><b>Voice and Fluency:</b></span><br />{{report.voice_and_fluency|safe}}
+<p>
+
+<p class="separator">&nbsp;<p>
+<p>
+
+ <span style="font-size:16px;"><b>Clinical Impressions and Recommendations:</b></span><br />{{report.clinical_impressions_and_recommendations|safe}}
+ <p>
+<p class="separator">&nbsp;<p>
+<p>
+  <span style="font-size:16px;"><b>Diagnosis:</b></span><br /><br />{{report.diagnosis}}
+<p>
+<p class="separator">&nbsp;<p>
+<p>
+ <span style="font-size:16px;"><b>Referrals and Follow Up:</b></span><br />{{report.referrals_and_follow_up|safe}}
+<p>
+<p class="separator">&nbsp;<p>
+<p>
+<span style="font-size:16px;"><b>Long Term Goals:</b></span><br />{{report.long_term_goals|safe}}
+<p>
+<p class="separator">&nbsp;<p>
+<p>
+ <span style="font-size:16px;"><b>Short Term Goals:</b></span><br />{{report.short_term_goals|safe}}
+<p>
+<p class="separator">&nbsp;<p>
+<p>
+  <span style="font-size:16px;"><b>Statement of Medical Neccessity:</b></span><br />{{report.statement_of_medical_neccessity|safe}}
+  <p>
+    <p class="separator">&nbsp;<p>
 <hr />
-<br /><span style="font-size:16px;"><b>Electronic Signature:</b></span><br />{{report.electronic_signature|safe}}<br />
+<p>
+  <span style="font-size:16px;"><b>Electronic Signature:</b></span><br />{{report.electronic_signature|safe}}
+  <p>
+    <p class="separator">&nbsp;<p>
+
 </body>
 </html>
 
