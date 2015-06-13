@@ -122,7 +122,7 @@ p.separator { -pdf-keep-with-next: false;}
  {{patient.first_name }} 
     <br /> {{patient.last_name}}     
     <br />{{patient.date_of_birth}}
-    <br /> {{patient.supervising_clinician}}
+    <br /> {% if patient.supervising_clinician %} {{patient.supervising_clinician}} {% else %} - {% endif %}
     <br /> {{patient.clinician}}
     <br /> {{report.date_of_visit}}
 
@@ -146,9 +146,9 @@ p.separator { -pdf-keep-with-next: false;}
  <br /> {{patient.referral_physician}}
         <br />{{patient.referral_physician_phone}}
         <br /> {{patient.referral_physician_fax}}
-        <br />{{patient.pediatrician}}
-        <br /> {{patient.pediatrician_phone}}
-        <br /> {{patient.pediatrician_fax}}
+        <br />{% if patient.pediatrician %} {{patient.pediatrician}} {% else %} - {% endif %}
+        <br />{% if patient.pediatrician_phone %} {{patient.pediatrician_phone}} {% else %} - {% endif %}
+        <br />{% if patient.pediatrician_fax %} {{patient.pediatrician_fax}} {% else %} - {% endif %}
        </td>
   </tr>
   </table>

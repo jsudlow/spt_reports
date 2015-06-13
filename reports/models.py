@@ -16,15 +16,15 @@ class Patient(models.Model):
     last_name = models.CharField(max_length=30)
     date_of_birth = models.DateField()
     clinician = models.CharField(max_length=30)
-    supervising_clinician = models.CharField(max_length=30)
-    chronological_age = models.IntegerField()
-    adjusted_age = models.IntegerField()
+    supervising_clinician = models.CharField(max_length=30,blank=True)
+    chronological_age = models.IntegerField(blank=True,null=True)
+    adjusted_age = models.IntegerField(blank=True,null=True)
     referral_physician = models.CharField(max_length=100)
     referral_physician_phone = models.CharField(max_length=20)
     referral_physician_fax = models.CharField(max_length=20)
-    pediatrician = models.CharField(max_length=100)
-    pediatrician_phone = models.CharField(max_length=20)
-    pediatrician_fax = models.CharField(max_length=20)
+    pediatrician = models.CharField(max_length=100,blank=True)
+    pediatrician_phone = models.CharField(max_length=20,blank=True)
+    pediatrician_fax = models.CharField(max_length=20,blank=True)
 
     def __str__(self):
         return self.first_name + " " + self.last_name

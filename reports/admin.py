@@ -13,7 +13,7 @@ class TestAdmin(admin.ModelAdmin):
 
 
 class SpeechEvaluationReportAdmin(admin.ModelAdmin):
-  list_display = ['patient','date_of_visit','my_url_field']
+  list_display = ['patient','date_of_visit','report_type','my_url_field']
   fieldsets = [
       (None,           {'fields': ['patient','location','report_type','date_of_visit','diagnosis','identifying_information_and_referral','parent_concern','background_information','pregnancy_and_birth','medical','developmental','family_social','education','hearing','cranial_nerve_exam']}),
       ('Articulation', {'fields': ['articulation'], 'classes': ['collapse']}),
