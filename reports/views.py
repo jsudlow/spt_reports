@@ -70,12 +70,13 @@ def generate_speech_eval_report(request, report_id):
     template = get_template('reports/generate_speech_eval_report.html')
     html  = template.render(Context(data))
     #print html
-
-    file = open('test.pdf', "w+b")
+    print 'about to try and open file'
+    file = open('C:/test.pdf', "w+b")
+    print 'opend file'
     pisaStatus = pisa.CreatePDF(html.encode('utf-8'), dest=file,
             encoding='utf-8')
 
-
+    print 'created pdf'
     file.seek(0)
     pdf = file.read()
     

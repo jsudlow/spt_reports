@@ -4,12 +4,12 @@
   <style>
   @font-face {
    font-family: DejaBold;
-   src: url("http://localhost:8000/static/CharisSIL-R.ttf");
+   src: url("C:\CharisSIL-R.ttf");
 }
 /* Bold */
 @font-face {
    font-family: DejaBold;
-   src: url("http://localhost:8000/static/CharisSIL-B.ttf");
+   src: url("C:\CharisSIL-B.ttf");
    font-weight: bold;
    
 }
@@ -17,7 +17,7 @@
 /* Italic */
 @font-face {
    font-family: DejaBold;
-   src: url("http://localhost:8000/static/CharisSIL-I.ttf");
+   src: url("C:\CharisSIL-I.ttf");
    font-style: italic;
 }
 
@@ -41,7 +41,7 @@ p.separator { -pdf-keep-with-next: false;}
   @page {
 
     size: a4 letter;
-    margin:21pt;
+    margin:30pt;
     border: 0pt solid white;
 
   
@@ -50,7 +50,7 @@ p.separator { -pdf-keep-with-next: false;}
             -pdf-frame-content: footer_content;
             
             left: 20pt;
-            top: 760pt;
+            top: 762pt;
 
             
         }
@@ -107,10 +107,9 @@ p.separator { -pdf-keep-with-next: false;}
     </p>
     </td>
     <td valign="bottom" width="70">
-    
     <img src="http://localhost:8000/static/patient.png" alt="SPT_logo"/>&nbsp;<b>Patient</b>
     
-    
+    <br />
     <br /> <b>First:</b>
     <br /> <b>Last:</b>
     <br /> <b>DOB:</b>
@@ -143,7 +142,7 @@ p.separator { -pdf-keep-with-next: false;}
        </td>
 
        <td valign="bottom" width="130">
- <br /> {{patient.referral_physician}}
+ {{patient.referral_physician}}
         <br />{{patient.referral_physician_phone}}
         <br /> {{patient.referral_physician_fax}}
         <br />{% if patient.pediatrician %} {{patient.pediatrician}} {% else %} - {% endif %}
@@ -156,66 +155,66 @@ p.separator { -pdf-keep-with-next: false;}
 <hr>
 <span style="font-size:16px;"><b>Diagnosis:</b></span>&nbsp;&nbsp;&nbsp;{{report.diagnosis}}<br />
 <p class="separator">&nbsp;<p>
-<p>
-  <span style="font-size:16px;"><b>Identifying Information and Referral:</b></span><br />{{report.identifying_information_and_referral|safe}}
-<p>
+
+  <span style="font-size:16px;"><b>Identifying Information and Referral:</b></span>{{report.identifying_information_and_referral|safe}}
+
 <p class="separator">&nbsp;<p>
 <p>
-  <span style="font-size:16px;"><b>Parent Concern:</b></span><br />{{report.parent_concern|safe}}
+  <span style="font-size:16px;"><b>Parent Concern:</b></span>{{report.parent_concern|safe}}
 <p>
-<p class="separator">&nbsp;<p>
-
-<p>
-<span style="font-size:16px;"><b>Background Information:</b></span><br />{{report.background_information|safe}}
-<p>
-
 <p class="separator">&nbsp;<p>
 
 <p>
-  <span style="font-size:16px;"><b>Pregnancy and Birth:</b></span><br />{{report.pregnancy_and_birth|safe}}
+<span style="font-size:16px;"><b>Background Information:</b></span>{{report.background_information|safe}}
 <p>
 
 <p class="separator">&nbsp;<p>
 
 <p>
-<span style="font-size:16px;"><b>Medical:</b></span><br />{{report.medical|safe}}
+  <span style="font-size:16px;"><b>Pregnancy and Birth:</b></span>{{report.pregnancy_and_birth|safe}}
 <p>
 
 <p class="separator">&nbsp;<p>
 
 <p>
-<span style="font-size:16px;"><b>Developmental:</b></span><br />{{report.developmental|safe}}
+<span style="font-size:16px;"><b>Medical:</b></span>{{report.medical|safe}}
 <p>
 
 <p class="separator">&nbsp;<p>
 
 <p>
- <span style="font-size:16px;"><b>Family/Social:</b></span><br />{{report.family_social|safe}}
+<span style="font-size:16px;"><b>Developmental:</b></span>{{report.developmental|safe}}
 <p>
 
 <p class="separator">&nbsp;<p>
 
 <p>
-   <span style="font-size:16px;"><b>Education:</b></span><br />{{report.education|safe}}
+ <span style="font-size:16px;"><b>Family/Social:</b></span>{{report.family_social|safe}}
 <p>
 
 <p class="separator">&nbsp;<p>
 
 <p>
-  <span style="font-size:16px;"><b>Hearing:</b></span><br />{{report.hearing|safe}}
+   <span style="font-size:16px;"><b>Education:</b></span>{{report.education|safe}}
 <p>
 
 <p class="separator">&nbsp;<p>
 
 <p>
-  <span style="font-size:16px;"><b>Cranial Nerve Exam:</b></span><br />{{report.cranial_nerve_exam|safe}}
+  <span style="font-size:16px;"><b>Hearing:</b></span>{{report.hearing|safe}}
+<p>
+
+<p class="separator">&nbsp;<p>
+
+<p>
+  <span style="font-size:16px;"><b>Cranial Nerve Exam:</b></span>{{report.cranial_nerve_exam|safe}}
 <p>
 
 <p class="separator">&nbsp;<p>
 
 {% if report.articulation %}
 <p>
-<span style="font-size:16px;"><b>Articulation:</b></span><br />{{report.articulation|safe}}
+<span style="font-size:16px;"><b>Articulation:</b></span>{{report.articulation|safe}}
 <p>
 
   <p class="separator">&nbsp;<p>
@@ -223,58 +222,58 @@ p.separator { -pdf-keep-with-next: false;}
 
 {% if report.initial_language_evaluation %}
 <p>
-<span style="font-size:16px;"><b>Language:</b></span><br />{{report.initial_language_evaluation|safe}}
+<span style="font-size:16px;"><b>Language:</b></span>{{report.initial_language_evaluation|safe}}
 <p>
   <p class="separator">&nbsp;<p>
 {% endif %}
 
 {% if report.speech_language_reevaluation_and_progress %}
 <p>
- <span style="font-size:16px;"><b>Speech Language Progress:</b></span><br />{{report.speech_language_reevaluation_and_progress|safe}}
+ <span style="font-size:16px;"><b>Speech Language Progress:</b></span>{{report.speech_language_reevaluation_and_progress|safe}}
  <p>
   <p class="separator">&nbsp;<p>
 {% endif %}
 
 {% if report.language_sample %}
 <p>
-<span style="font-size:16px;"><b>Language Sample:</b></span><br />{{report.language_sample|safe}}
+<span style="font-size:16px;"><b>Language Sample:</b></span>{{report.language_sample|safe}}
 <p>
   <p class="separator">&nbsp;<p>
 {% endif %}
 
 <p>
- <span style="font-size:16px;"><b>Voice and Fluency:</b></span><br />{{report.voice_and_fluency|safe}}
+ <span style="font-size:16px;"><b>Voice and Fluency:</b></span>{{report.voice_and_fluency|safe}}
 <p>
 
 <p class="separator">&nbsp;<p>
 <p>
 
- <span style="font-size:16px;"><b>Clinical Impressions and Recommendations:</b></span><br />{{report.clinical_impressions_and_recommendations|safe}}
+ <span style="font-size:16px;"><b>Clinical Impressions and Recommendations:</b></span>{{report.clinical_impressions_and_recommendations|safe}}
  <p>
 <p class="separator">&nbsp;<p>
 <p>
-  <span style="font-size:16px;"><b>Diagnosis:</b></span><br /><br />{{report.diagnosis}}
+  <span style="font-size:16px;"><b>Diagnosis:</b></span>{{report.diagnosis}}
 <p>
 <p class="separator">&nbsp;<p>
 <p>
- <span style="font-size:16px;"><b>Referrals and Follow Up:</b></span><br />{{report.referrals_and_follow_up|safe}}
+ <span style="font-size:16px;"><b>Referrals and Follow Up:</b></span>{{report.referrals_and_follow_up|safe}}
 <p>
 <p class="separator">&nbsp;<p>
 <p>
-<span style="font-size:16px;"><b>Long Term Goals:</b></span><br />{{report.long_term_goals|safe}}
+<span style="font-size:16px;"><b>Long Term Goals:</b></span>{{report.long_term_goals|safe}}
 <p>
 <p class="separator">&nbsp;<p>
 <p>
- <span style="font-size:16px;"><b>Short Term Goals:</b></span><br />{{report.short_term_goals|safe}}
+ <span style="font-size:16px;"><b>Short Term Goals:</b></span>{{report.short_term_goals|safe}}
 <p>
 <p class="separator">&nbsp;<p>
 <p>
-  <span style="font-size:16px;"><b>Statement of Medical Neccessity:</b></span><br />{{report.statement_of_medical_neccessity|safe}}
+  <span style="font-size:16px;"><b>Statement of Medical Neccessity:</b></span>{{report.statement_of_medical_neccessity|safe}}
   <p>
     <p class="separator">&nbsp;<p>
 <hr />
 <p>
-  <span style="font-size:16px;"><b>Electronic Signature:</b></span><br />{{report.electronic_signature|safe}}
+  <span style="font-size:16px;"><b>Electronic Signature:</b></span>{{report.electronic_signature|safe}}
   <p>
     <p class="separator">&nbsp;<p>
 

@@ -81,9 +81,9 @@ WSGI_APPLICATION = 'spt_reports.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'spt_reports_unicode',
+        'NAME': 'spt_reports_unicode2',
         'USER': 'root',
-        'PASSWORD': 'jonjon',
+        'PASSWORD': '',
         'HOST' : '127.0.0.1',
         'PORT': '3306',
     }
@@ -108,7 +108,8 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/1.8/howto/static-files/
 
 STATIC_URL = '/static/'
-STATIC_ROOT = '/home/jsudlow/repos/spt_reports/static'
+STATIC_ROOT = 'C:/Users/Administrator/Documents/spt_reports-master/spt_reports-master/reports/static'
+
 DJANGO_WYSIWYG_FLAVOR = "ckeditor"
 CKEDITOR_UPLOAD_PATH = "uploads/"
 CKEDITOR_CONFIGS = {
@@ -117,6 +118,6 @@ CKEDITOR_CONFIGS = {
         'scayt_autoStartup': True,
         'height': 300,
         'width': 1000,
-        'specialChars': ['&#x0259;','&#x0278;','&#x014B','&#x03B8;','&eth;','&#x0283;','&#x0292;','&#x026A;','&#x025B;','&aelig;','&#x028C;','&#x025A;','&#x025D;','&#x028A;','&#x0254;','&#x0251;'],
+        'specialChars': ['&#x2713;','&#x0259;','&#x0278;','&#x014B','&#x03B8;','&eth;','&#x0283;','&#x0292;','&#x026A;','&#x025B;','&aelig;','&#x028C;','&#x025A;','&#x025D;','&#x028A;','&#x0254;','&#x0251;'],
     },
 }
