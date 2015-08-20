@@ -15,12 +15,15 @@ class TestAdmin(admin.ModelAdmin):
 class SpeechEvaluationReportAdmin(admin.ModelAdmin):
   list_display = ['patient','date_of_visit','report_type','my_url_field']
   fieldsets = [
-      (None,           {'fields': ['patient','location','report_type','date_of_visit','diagnosis','identifying_information_and_referral','parent_concern','background_information','pregnancy_and_birth','medical','developmental','family_social','education','hearing','cranial_nerve_exam']}),
+      (None, {'fields': ['patient','location','report_type','date_of_visit','diagnosis','identifying_information_and_referral','parent_concern','background_information','pregnancy_and_birth','medical','developmental','family_social','education','hearing']}),
+      ('Behavioral Observation', {'fields': ['behavioral_observation'], 'classes': ['collapse']}),
+      (None, {'fields': ['cranial_nerve_exam']}),
       ('Articulation', {'fields': ['articulation'], 'classes': ['collapse']}),
-      ('Initial Language Evaluation', {'fields': ['initial_language_evaluation'], 'classes': ['collapse']}),
-      ('Speech-Language Re-Evaluation and Progress(for six month assessment)', {'fields': ['speech_language_reevaluation_and_progress'], 'classes': ['collapse']}),
+      ('Language', {'fields': ['language'], 'classes': ['collapse']}),
       ('Language Sample', {'fields': ['language_sample'], 'classes': ['collapse']}),
-      (None, {'fields': ['voice_and_fluency','clinical_impressions_and_recommendations','referrals_and_follow_up','long_term_goals','short_term_goals','statement_of_medical_neccessity','electronic_signature']})
+      (None, {'fields': ['voice_and_fluency']}),
+      ('Speech-Language-Progress', {'fields': ['speech_language_progress'], 'classes': ['collapse']}),
+      (None, {'fields': ['clinical_impressions_and_recommendations','referrals_and_follow_up','long_term_goals','short_term_goals','statement_of_medical_neccessity','electronic_signature']})
   ]
   
 

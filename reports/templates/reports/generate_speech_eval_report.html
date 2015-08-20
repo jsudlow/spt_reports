@@ -205,7 +205,13 @@ p.separator { -pdf-keep-with-next: false;}
 <p>
 
 <p class="separator">&nbsp;<p>
+{% if report.behavioral_observation %}
+<p>
+<span style="font-size:16px;"><b>Behavioral Observations:</b></span>{{report.behavioral_observation|safe}}
+<p>
 
+  <p class="separator">&nbsp;<p>
+{% endif %}
 <p>
   <span style="font-size:16px;"><b>Cranial Nerve Exam:</b></span>{{report.cranial_nerve_exam|safe}}
 <p>
@@ -220,19 +226,14 @@ p.separator { -pdf-keep-with-next: false;}
   <p class="separator">&nbsp;<p>
 {% endif %}
 
-{% if report.initial_language_evaluation %}
+{% if report.language %}
 <p>
-<span style="font-size:16px;"><b>Language:</b></span>{{report.initial_language_evaluation|safe}}
+<span style="font-size:16px;"><b>Language:</b></span>{{report.language|safe}}
 <p>
   <p class="separator">&nbsp;<p>
 {% endif %}
 
-{% if report.speech_language_reevaluation_and_progress %}
-<p>
- <span style="font-size:16px;"><b>Speech Language Progress:</b></span>{{report.speech_language_reevaluation_and_progress|safe}}
- <p>
-  <p class="separator">&nbsp;<p>
-{% endif %}
+
 
 {% if report.language_sample %}
 <p>
@@ -244,7 +245,12 @@ p.separator { -pdf-keep-with-next: false;}
 <p>
  <span style="font-size:16px;"><b>Voice and Fluency:</b></span>{{report.voice_and_fluency|safe}}
 <p>
-
+{% if report.speech_language_progress %}
+<p>
+ <span style="font-size:16px;"><b>Speech Language Progress:</b></span>{{report.speech_language_progress|safe}}
+ <p>
+  <p class="separator">&nbsp;<p>
+{% endif %}
 <p class="separator">&nbsp;<p>
 <p>
 
@@ -252,7 +258,7 @@ p.separator { -pdf-keep-with-next: false;}
  <p>
 <p class="separator">&nbsp;<p>
 <p>
-  <span style="font-size:16px;"><b>Diagnosis:</b></span>{{report.diagnosis}}
+  <span style="font-size:16px;"><b>Diagnosis:</b><br /></span>{{report.diagnosis|safe}}
 <p>
 <p class="separator">&nbsp;<p>
 <p>

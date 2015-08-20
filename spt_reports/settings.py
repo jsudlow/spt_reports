@@ -115,9 +115,10 @@ CKEDITOR_UPLOAD_PATH = "uploads/"
 CKEDITOR_CONFIGS = {
     'default': {
         'toolbar': 'full',
-        'scayt_autoStartup': True,
+        'disableNativeSpellChecker': False,
         'height': 300,
         'width': 1000,
         'specialChars': ['&#x2713;','&#x0259;','&#x0278;','&#x014B','&#x03B8;','&eth;','&#x0283;','&#x0292;','&#x026A;','&#x025B;','&aelig;','&#x028C;','&#x025A;','&#x025D;','&#x028A;','&#x0254;','&#x0251;'],
-    },
+        
+	}
 }
