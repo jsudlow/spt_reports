@@ -10,6 +10,11 @@ SPEECH_EVAL_REPORT_TITLES = (
         ('Initial Speech-Language Evaluation Report', 'Initial Speech-Language Evaluation Report'),
         ('Speech-Language Re-evaluation Report', 'Speech-Language Re-evaluation Report'),
     )
+
+OCCUPATIONAL_EVAL_REPORT_TITLES = (
+        ('Initial Occupational-Language Evaluation Report', 'Initial Occupational-Language Evaluation Report'),
+        ('Occupational-Language Re-evaluation Report', 'Occupational-Language Re-evaluation Report'),
+    )
 # Create your models here.
 class Patient(models.Model):
     first_name = models.CharField(max_length=30)
@@ -84,6 +89,17 @@ class SpeechEvaluationReport(models.Model):
     
     def __str__(self):
         return self.patient.first_name + " " + self.patient.last_name + " " + str(self.date_of_visit)
+		
+class OccupationalEvaluationReport(models.Model):
+    patient = models.ForeignKey(Patient)
+    date_of_visit = models.DateField()
+    location = models.CharField(max_length=200, choices=LOCATION_CHOICES)
+    report_type = models.CharField(max_length=200, choices=OCCUPATIONAL_EVAL_REPORT_TITLES)
+	
+    def __str__(self):
+        return self.patient.first_name + " " + self.patient.last_name + " " + str(self.date_of_visit)
+	
+	
 
 
 

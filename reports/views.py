@@ -1,5 +1,5 @@
 from django.shortcuts import render
-from reports.models import SpeechEvaluationReport,Patient
+from reports.models import SpeechEvaluationReport,Patient,OccupationalEvaluationReport
 from django.http import HttpResponse
 from reportlab.lib.pagesizes import letter
 from reportlab.pdfgen import canvas
@@ -33,6 +33,39 @@ def link_callback(uri, rel):
 
 def index(request):
     return render(request, 'reports/index.html')
+
+def generate_occupational_eval_report(request, report_id):
+    report = OccupationalEvaluationReport.objects.get(id=report_id)
+    patient = Patient.objects.get(id=report.patient_id)
+    #context = {'report': report, 'patient': patient}
+    #return render(request, 'reports/generate_occupational_eval_report.html',context)
+	
+    dob = patient.date_of_birth
+    date_of_visit = report.date_of_visit
+    years = (date_of_visit - dob).days/365
+    print "dob", dob
+    print "visit date",date_of_visit
+
+    print "years:", years
+	
+    data = {'report': report, 'patient': patient,'years':years}
+    template = get_template('reports/generate_occupational_eval_report.html')
+    html  = template.render(Context(data))
+    #print html
+    print 'about to try and open file'
+    file = open('C:/testOt.pdf', "w+b")
+    print 'opend file'
+    pisaStatus = pisa.CreatePDF(html.encode('utf-8'), dest=file,
+            encoding='utf-8')
+
+    print 'created pdf'
+    file.seek(0)
+    pdf = file.read()
+    
+    file.close()            
+    return HttpResponse(pdf,content_type='application/pdf')
+    
+	
 def generate_speech_eval_report2(request, report_id):
     #response = HttpResponse(content_type='application/pdf')
     #response['Content-Disposition'] = 'attachment; filename="speech_evaluation_report.pdf"'

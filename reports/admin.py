@@ -2,7 +2,7 @@ from django.contrib import admin
 from django.core.urlresolvers import reverse
 
 # Register your models here.
-from .models import Patient,Physician,SpeechEvaluationReport,Test,TestScore
+from .models import Patient,Physician,SpeechEvaluationReport,Test,TestScore,OccupationalEvaluationReport
 
 class ScoreInline(admin.TabularInline):
     model = TestScore
@@ -34,11 +34,20 @@ class SpeechEvaluationReportAdmin(admin.ModelAdmin):
   my_url_field.allow_tags = True
   my_url_field.short_description = 'Generate Report'
   
-  
+
+class OccupationalEvaluationReportAdmin(admin.ModelAdmin):
+    list_display = ['patient','date_of_visit','my_url_field']  
+	
+    def my_url_field(self, obj):
+      #link = "<a href='http://localhost:8000/reports/generate_speech_eval_report/" + str(obj.id) +"/'>Generate Report</a>" 
+      link = "<a href='" + reverse('generate_occupational_eval_report',args=[obj.id]) + "' target='_blank'>Generate Report</a>"
+      return link
+    my_url_field.allow_tags = True
+    my_url_field.short_description = 'Generate Report'
 
 admin.site.register(Patient)
 admin.site.register(Test,TestAdmin)
 admin.site.register(TestScore)
-
+admin.site.register(OccupationalEvaluationReport,OccupationalEvaluationReportAdmin)
 admin.site.register(Physician)
 admin.site.register(SpeechEvaluationReport,SpeechEvaluationReportAdmin)
