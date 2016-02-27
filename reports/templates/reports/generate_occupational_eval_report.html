@@ -171,33 +171,22 @@ p.separator { -pdf-keep-with-next: false;}
 
 <p class="separator">&nbsp;<p>
 
+{% if report.pregnancy_and_birth %}
 <p>
   <span style="font-size:16px;"><b>Pregnancy and Birth:</b></span>{{report.pregnancy_and_birth|safe}}
 <p>
 
 <p class="separator">&nbsp;<p>
+{% endif %}
 
+{% if report.medical_and_developmental %}
 <p>
-<span style="font-size:16px;"><b>Medical:</b></span>{{report.medical|safe}}
-<p>
-
-<p class="separator">&nbsp;<p>
-
-<p>
-<span style="font-size:16px;"><b>Developmental:</b></span>{{report.developmental|safe}}
+<span style="font-size:16px;"><b>Medical and Developmental:</b></span>{{report.medical_and_developmental|safe}}
 <p>
 
 <p class="separator">&nbsp;<p>
+{% endif %}
 
-<p>
- <span style="font-size:16px;"><b>Family/Social:</b></span>{{report.family_social|safe}}
-<p>
-<p class="separator">&nbsp;<p>
-
-<p>
-   <span style="font-size:16px;"><b>Education:</b></span>{{report.education|safe}}
-<p>
-<p class="separator">&nbsp;<p>
 
 <p>
    <span style="font-size:16px;"><b>Activities of Daily Living:</b></span>{{report.activities_of_daily_living|safe}}
@@ -206,13 +195,7 @@ p.separator { -pdf-keep-with-next: false;}
 <p class="separator">&nbsp;<p>
 
 <p>
-   <span style="font-size:16px;"><b>Strength:</b></span>{{report.strength|safe}}
-<p>
-
-<p class="separator">&nbsp;<p>
-
-<p>
-   <span style="font-size:16px;"><b>Muscle Tone:</b></span>{{report.muscle_tone|safe}}
+   <span style="font-size:16px;"><b>Strength/Endurance:</b></span>{{report.strength|safe}}
 <p>
 
 <p class="separator">&nbsp;<p>
@@ -223,29 +206,33 @@ p.separator { -pdf-keep-with-next: false;}
 
 <p class="separator">&nbsp;<p>
 
+{% if report.visual_motor_skills %}
 <p>
    <span style="font-size:16px;"><b>Visual Motor Skills:</b></span>{{report.visual_motor_skills|safe}}
 <p>
 
 <p class="separator">&nbsp;<p>
+{% endif %}
 
+{%if report.sensory_processing %}
 <p>
    <span style="font-size:16px;"><b>Sensory Processing:</b></span>{{report.sensory_processing|safe}}
 <p>
  
  <p class="separator">&nbsp;<p>
+{% endif %}
 
+ {% if report.handwriting %}
 <p>
-   <span style="font-size:16px;"><b>Adaptive Skills:</b></span>{{report.adaptive_skills|safe}}
+   <span style="font-size:16px;"><b>Handwriting:</b></span>{{report.handwriting|safe}}
 <p>
-
+<p class="separator">&nbsp;<p>
+{% endif %}
 <span style="font-size:16px;"><b>Clinical Impressions and Recommendations:</b></span>{{report.clinical_impressions_and_recommendations|safe}}
- <p>
+
+
 <p class="separator">&nbsp;<p>
-<p>
-  <span style="font-size:16px;"><b>Diagnosis:</b><br /></span>{{report.diagnosis|safe}}
-<p>
-<p class="separator">&nbsp;<p>
+
 <p>
  <span style="font-size:16px;"><b>Referrals and Follow Up:</b></span>{{report.referrals_and_follow_up|safe}}
 <p>
@@ -254,10 +241,14 @@ p.separator { -pdf-keep-with-next: false;}
 <span style="font-size:16px;"><b>Long Term Goals:</b></span>{{report.long_term_goals|safe}}
 <p>
 <p class="separator">&nbsp;<p>
+
+{% if report.short_term_goals %}
 <p>
  <span style="font-size:16px;"><b>Short Term Goals:</b></span>{{report.short_term_goals|safe}}
 <p>
 <p class="separator">&nbsp;<p>
+{% endif %}
+
 <p>
   <span style="font-size:16px;"><b>Statement of Medical Neccessity:</b></span>{{report.statement_of_medical_neccessity|safe}}
   <p>

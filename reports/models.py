@@ -99,22 +99,22 @@ class OccupationalEvaluationReport(models.Model):
     identifying_information_and_referral = RichTextField()
     parent_concern = RichTextField()
     background_information = RichTextField()
-    pregnancy_and_birth = RichTextField()
-    medical = RichTextField()
-    developmental = RichTextField()
-    family_social = RichTextField()
-    education = RichTextField()
+    pregnancy_and_birth = RichTextField(blank=True)
+    medical_and_developmental = RichTextField(blank=True)
+    
+    
+    
     activities_of_daily_living = RichTextField()
     strength = RichTextField()
-    muscle_tone = RichTextField()
+    
     fine_motor_skills = RichTextField()
-    visual_motor_skills = RichTextField()
-    sensory_processing = RichTextField()
-    adaptive_skills = RichTextField()
+    visual_motor_skills = RichTextField(blank=True)
+    sensory_processing = RichTextField(blank=True)
+    handwriting = RichTextField(blank=True)
     clinical_impressions_and_recommendations = RichTextField()
     referrals_and_follow_up = RichTextField()
     long_term_goals = RichTextField()
-    short_term_goals = RichTextField()
+    short_term_goals = RichTextField(blank=True)
     statement_of_medical_neccessity = RichTextField()
     electronic_signature = RichTextField()
 	
