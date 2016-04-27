@@ -122,8 +122,8 @@ p.separator { -pdf-keep-with-next: false;}
  {{patient.first_name }} 
     <br /> {{patient.last_name}}     
     <br />{{patient.date_of_birth}}
-    <br /> {% if patient.supervising_clinician %} {{patient.supervising_clinician}} {% else %} - {% endif %}
-    <br /> {{patient.clinician}}
+    <br /> {% if report.supervising_clinician %} {{report.supervising_clinician}} {% else %} - {% endif %}
+    <br /> {{report.clinician}}
     <br /> {{report.date_of_visit}}
 
    </td>
@@ -233,10 +233,12 @@ p.separator { -pdf-keep-with-next: false;}
 
 <p class="separator">&nbsp;<p>
 
+{% if report.referrals_and_follow_up %}
 <p>
  <span style="font-size:16px;"><b>Referrals and Follow Up:</b></span>{{report.referrals_and_follow_up|safe}}
 <p>
 <p class="separator">&nbsp;<p>
+{% endif %}
 <p>
 <span style="font-size:16px;"><b>Long Term Goals:</b></span>{{report.long_term_goals|safe}}
 <p>

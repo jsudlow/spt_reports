@@ -122,8 +122,8 @@ p.separator { -pdf-keep-with-next: false;}
  {{patient.first_name }} 
     <br /> {{patient.last_name}}     
     <br />{{patient.date_of_birth}}
-    <br /> {% if patient.supervising_clinician %} {{patient.supervising_clinician}} {% else %} - {% endif %}
-    <br /> {{patient.clinician}}
+    <br /> {% if report.supervising_clinician %} {{report.supervising_clinician}} {% else %} - {% endif %}
+    <br /> {{report.clinician}}
     <br /> {{report.date_of_visit}}
 
    </td>
@@ -171,41 +171,55 @@ p.separator { -pdf-keep-with-next: false;}
 
 <p class="separator">&nbsp;<p>
 
+{% if report.pregnancy_and_birth %}
 <p>
   <span style="font-size:16px;"><b>Pregnancy and Birth:</b></span>{{report.pregnancy_and_birth|safe}}
 <p>
 
 <p class="separator">&nbsp;<p>
+{% endif %}
 
+
+{% if report.medical %}
 <p>
 <span style="font-size:16px;"><b>Medical:</b></span>{{report.medical|safe}}
 <p>
 
 <p class="separator">&nbsp;<p>
+{% endif %}
 
+{% if report.developmental %}
 <p>
 <span style="font-size:16px;"><b>Developmental:</b></span>{{report.developmental|safe}}
 <p>
 
 <p class="separator">&nbsp;<p>
+{% endif %}
 
+{% if report.family_social %}
 <p>
  <span style="font-size:16px;"><b>Family/Social:</b></span>{{report.family_social|safe}}
 <p>
 
 <p class="separator">&nbsp;<p>
+{% endif %}
 
+{% if report.education %}
 <p>
    <span style="font-size:16px;"><b>Education:</b></span>{{report.education|safe}}
 <p>
 
 <p class="separator">&nbsp;<p>
+{% endif %}
 
+{% if report.hearing %}
 <p>
   <span style="font-size:16px;"><b>Hearing:</b></span>{{report.hearing|safe}}
 <p>
 
 <p class="separator">&nbsp;<p>
+{% endif %}
+
 {% if report.behavioral_observation %}
 <p>
 <span style="font-size:16px;"><b>Behavioral Observations:</b></span>{{report.behavioral_observation|safe}}
@@ -213,11 +227,14 @@ p.separator { -pdf-keep-with-next: false;}
 
   <p class="separator">&nbsp;<p>
 {% endif %}
+
+{% if report.cranial_nerve_exam %}
 <p>
   <span style="font-size:16px;"><b>Cranial Nerve Exam:</b></span>{{report.cranial_nerve_exam|safe}}
 <p>
 
 <p class="separator">&nbsp;<p>
+{% endif %}
 
 {% if report.articulation %}
 <p>
@@ -270,10 +287,13 @@ p.separator { -pdf-keep-with-next: false;}
 <span style="font-size:16px;"><b>Long Term Goals:</b></span>{{report.long_term_goals|safe}}
 <p>
 <p class="separator">&nbsp;<p>
+
+{% if report.short_term_goals %}
 <p>
  <span style="font-size:16px;"><b>Short Term Goals:</b></span>{{report.short_term_goals|safe}}
 <p>
 <p class="separator">&nbsp;<p>
+{% endif %}
 <p>
   <span style="font-size:16px;"><b>Statement of Medical Neccessity:</b></span>{{report.statement_of_medical_neccessity|safe}}
   <p>

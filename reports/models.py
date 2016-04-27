@@ -20,8 +20,8 @@ class Patient(models.Model):
     first_name = models.CharField(max_length=30)
     last_name = models.CharField(max_length=30)
     date_of_birth = models.DateField()
-    clinician = models.CharField(max_length=30)
-    supervising_clinician = models.CharField(max_length=30,blank=True)
+    
+    
     chronological_age = models.DecimalField(max_digits=5, decimal_places=2,blank=True,null=True)
     adjusted_age = models.IntegerField(blank=True,null=True)
     referral_physician = models.CharField(max_length=100)
@@ -59,6 +59,8 @@ class Physician(models.Model):
 
 class SpeechEvaluationReport(models.Model):
     patient = models.ForeignKey(Patient)
+    clinician = models.CharField(max_length=30)
+    supervising_clinician = models.CharField(max_length=30,blank=True)
     date_of_visit = models.DateField()
     location = models.CharField(max_length=200, choices=LOCATION_CHOICES)
     report_type = models.CharField(max_length=200, choices=SPEECH_EVAL_REPORT_TITLES)
@@ -66,14 +68,14 @@ class SpeechEvaluationReport(models.Model):
     identifying_information_and_referral = RichTextField()
     parent_concern = RichTextField()
     background_information = RichTextField()
-    pregnancy_and_birth = RichTextField()
-    medical = RichTextField()
-    developmental = RichTextField()
-    family_social = RichTextField()
-    education = RichTextField()
-    hearing = RichTextField()
+    pregnancy_and_birth = RichTextField(blank=True)
+    medical = RichTextField(blank=True)
+    developmental = RichTextField(blank=True)
+    family_social = RichTextField(blank=True)
+    education = RichTextField(blank=True)
+    hearing = RichTextField(blank=True)
     behavioral_observation = RichTextField(blank=True)
-    cranial_nerve_exam = RichTextField()
+    cranial_nerve_exam = RichTextField(blank=True)
     articulation = RichTextField(blank=True)
     language = RichTextField(blank=True)
     speech_language_progress = RichTextField(blank=True)
@@ -82,7 +84,7 @@ class SpeechEvaluationReport(models.Model):
     clinical_impressions_and_recommendations = RichTextField()
     referrals_and_follow_up = RichTextField()
     long_term_goals = RichTextField()
-    short_term_goals = RichTextField()
+    short_term_goals = RichTextField(blank=True)
     statement_of_medical_neccessity = RichTextField()
     electronic_signature = RichTextField()
     
@@ -92,6 +94,8 @@ class SpeechEvaluationReport(models.Model):
 		
 class OccupationalEvaluationReport(models.Model):
     patient = models.ForeignKey(Patient)
+    clinician = models.CharField(max_length=30)
+    supervising_clinician = models.CharField(max_length=30,blank=True)
     date_of_visit = models.DateField()
     location = models.CharField(max_length=200, choices=LOCATION_CHOICES)
     report_type = models.CharField(max_length=200, choices=OCCUPATIONAL_EVAL_REPORT_TITLES)
@@ -112,7 +116,7 @@ class OccupationalEvaluationReport(models.Model):
     sensory_processing = RichTextField(blank=True)
     handwriting = RichTextField(blank=True)
     clinical_impressions_and_recommendations = RichTextField()
-    referrals_and_follow_up = RichTextField()
+    referrals_and_follow_up = RichTextField(blank=True)
     long_term_goals = RichTextField()
     short_term_goals = RichTextField(blank=True)
     statement_of_medical_neccessity = RichTextField()
